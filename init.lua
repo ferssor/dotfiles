@@ -81,20 +81,27 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Setup lazy.nvim
 require("lazy").setup({
-  spec = {
-    -- add your plugins here
-    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-    {
-    'nvim-telescope/telescope.nvim', tag = '0.1.8',
-    dependencies = { 'nvim-lua/plenary.nvim' }
-    },
-    {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"}
-  },
-  -- Configure any other settings here. See the documentation for more details.
-  -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "habamax" } },
-  -- automatically check for plugin updates
-  checker = { enabled = true },
+	spec = {
+		{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+		{
+			'nvim-telescope/telescope.nvim', tag = '0.1.8',
+			dependencies = { 'nvim-lua/plenary.nvim' }
+		},
+		{"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
+		{"nvim-neo-tree/neo-tree.nvim",
+			branch = "v3.x",
+			dependencies = {
+				"nvim-lua/plenary.nvim",
+				"nvim-tree/nvim-web-devicons", 
+				"MunifTanjim/nui.nvim",
+			}
+		}
+	},
+	-- Configure any other settings here. See the documentation for more details.
+	-- colorscheme that will be used when installing plugins.
+	install = { colorscheme = { "habamax" } },
+	-- automatically check for plugin updates
+	checker = { enabled = true },
 })
 
 
@@ -109,7 +116,7 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live gr
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 
--- Setting tree-siter
+-- Setting tree-sitter
 local config = require("nvim-treesitter.configs")
 config.setup({
     ensure_installed = require'nvim-treesitter.parsers'.available_parsers(),
@@ -118,4 +125,5 @@ config.setup({
     indent = { enable = true },  
 })
 
-
+-- Setting neo-tree key mapping
+vim.keymap.set('n', '<leader>e', ':Neotree filesystem reveal right<CR>', {})
