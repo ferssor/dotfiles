@@ -1,39 +1,3 @@
--- General
-vim.opt.autoindent = true
-vim.opt.expandtab = true
-vim.cmd('filetype indent on')
-vim.opt.shiftround = true
-vim.opt.shiftwidth = 4
-vim.opt.smarttab = true
-vim.opt.tabstop = 4
-
--- Search Options
-vim.opt.hlsearch = true
-vim.opt.ignorecase = true
-vim.opt.incsearch = true
-vim.opt.smartcase = true
-
--- Performance Options
-vim.opt.complete:remove('i')
-vim.opt.lazyredraw = true
-vim.opt.ttyfast = true
-
--- Text Rendering Options
-vim.opt.display:append('lastline')
-vim.opt.encoding = 'utf-8'
-vim.opt.linebreak = true
-vim.opt.scrolloff = 1
-vim.opt.sidescrolloff = 5
-vim.cmd('syntax enable')
-vim.opt.wrap = true
-
--- User Interface Options
-vim.opt.laststatus = 2
-vim.opt.ruler = true
-vim.opt.wildmenu = true
-vim.opt.termguicolors = true
-vim.opt.tabpagemax = 50
-vim.opt.cursorline = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.errorbells = false
@@ -123,7 +87,8 @@ require("lazy").setup({
     {
     'nvim-telescope/telescope.nvim', tag = '0.1.8',
     dependencies = { 'nvim-lua/plenary.nvim' }
-    }
+    },
+    {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"}
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
@@ -131,6 +96,7 @@ require("lazy").setup({
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
+
 
 -- Setting colorscheme
 require("catppuccin").setup()
@@ -142,3 +108,14 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find f
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+
+-- Setting tree-siter
+local config = require("nvim-treesitter.configs")
+config.setup({
+    ensure_installed = require'nvim-treesitter.parsers'.available_parsers(),
+    sync_install = false,
+    highlight = { enable = true },
+    indent = { enable = true },  
+})
+
+
