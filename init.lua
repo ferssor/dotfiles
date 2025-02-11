@@ -206,36 +206,20 @@ require("mason-lspconfig").setup({
 })
 
 -- Setting LSP's
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require("lspconfig")
 
-lspconfig.ts_ls.setup({
-	capabilities = capabilities
-})
-lspconfig.rust_analyzer.setup({
-	capabilities = capabilities
-})
-lspconfig.html.setup({
-	capabilities = capabilities
-})
-lspconfig.lua_ls.setup({
-	capabilities = capabilities
-})
-lspconfig.bashls.setup({
-	capabilities = capabilities
-})
-lspconfig.sqls.setup({
-	capabilities = capabilities
-})
-lspconfig.robotframework_ls.setup({
-	capabilities = capabilities
-})
-lspconfig.eslint.setup({
-	capabilities = capabilities
-})
-lspconfig.intelephense.setup({
-	capabilities = capabilities
-})
-lspconfig.pyright.setup({
-	capabilities = capabilities
-})
+lspconfig.ts_ls.setup({})
+lspconfig.rust_analyzer.setup({})
+lspconfig.html.setup({})
+lspconfig.lua_ls.setup({})
+lspconfig.bashls.setup({})
+lspconfig.sqls.setup({})
+lspconfig.robotframework_ls.setup({})
+lspconfig.eslint.setup({})
+lspconfig.intelephense.setup({})
+lspconfig.pyright.setup({})
+
+vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
+vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
+vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
