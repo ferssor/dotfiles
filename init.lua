@@ -1,3 +1,4 @@
+-- General
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.errorbells = false
@@ -92,13 +93,21 @@ require("lazy").setup({
 			branch = "v3.x",
 			dependencies = {
 				"nvim-lua/plenary.nvim",
-				"nvim-tree/nvim-web-devicons", 
+				"nvim-tree/nvim-web-devicons",
 				"MunifTanjim/nui.nvim",
 			}
 		},
 		{
 			'nvim-lualine/lualine.nvim',
 			dependencies = { 'nvim-tree/nvim-web-devicons' }
+		},
+		{
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+			"neovim/nvim-lspconfig",
+		},
+		{
+			"hrsh7th/cmp-nvim-lsp"
 		}
 	},
 	-- Configure any other settings here. See the documentation for more details.
@@ -126,7 +135,7 @@ config.setup({
     ensure_installed = require'nvim-treesitter.parsers'.available_parsers(),
     sync_install = false,
     highlight = { enable = true },
-    indent = { enable = true },  
+    indent = { enable = true }
 })
 
 -- Setting neo-tree key mapping
@@ -164,6 +173,69 @@ require('lualine').setup {
   extensions = {},
 }
 
+-- Setting mason
+require("mason").setup()
+require("mason-lspconfig").setup({
+	ensure_installed = {
+		"arduino_language_server",
+		"astro", "bashls",
+		"csharp_ls",
+		"harper_ls",
+		"cssls",
+		"cucumber_language_server",
+		"jinja_lsp",
+		"gopls",
+		"html",
+		"java_language_server",
+		"eslint",
+		"jsonls",
+		"ast_grep",
+		"textlsp",
+		"lua_ls",
+		"grammarly",
+		"mdx_analyzer",
+		"intelephense",
+		"pyright",
+		"robotframeweork_ls",
+		"ruby_lsp",
+		"rust_analyzer",
+		"sqls",
+		"ts_ls",
+		"bashls"
+	}
+})
 
+-- Setting LSP's
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local lspconfig = require("lspconfig")
 
-
+lspconfig.ts_ls.setup({
+	capabilities = capabilities
+})
+lspconfig.rust_analyzer.setup({
+	capabilities = capabilities
+})
+lspconfig.html.setup({
+	capabilities = capabilities
+})
+lspconfig.lua_ls.setup({
+	capabilities = capabilities
+})
+lspconfig.bashls.setup({
+	capabilities = capabilities
+})
+lspconfig.sqls.setup({
+	capabilities = capabilities
+})
+lspconfig.robotframework_ls.setup({
+	capabilities = capabilities
+})
+lspconfig.eslint.setup({
+	capabilities = capabilities
+})
+lspconfig.intelephense.setup({
+	capabilities = capabilities
+})
+lspconfig.pyright.setup({
+	capabilities = capabilities
+})
