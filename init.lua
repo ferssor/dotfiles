@@ -95,6 +95,10 @@ require("lazy").setup({
 				"nvim-tree/nvim-web-devicons", 
 				"MunifTanjim/nui.nvim",
 			}
+		},
+		{
+			'nvim-lualine/lualine.nvim',
+			dependencies = { 'nvim-tree/nvim-web-devicons' }
 		}
 	},
 	-- Configure any other settings here. See the documentation for more details.
@@ -127,3 +131,6 @@ config.setup({
 
 -- Setting neo-tree key mapping
 vim.keymap.set('n', '<leader>e', ':Neotree filesystem reveal right<CR>', {})
+
+-- Setting lualine
+require('lualine').setup()
