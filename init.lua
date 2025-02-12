@@ -108,6 +108,9 @@ require("lazy").setup({
 		},
 		{
 			"marko-cerovac/material.nvim"
+		},
+		{
+			"nvim-telescope/telescope-ui-select.nvim"
 		}
 	},
 	-- Configure any other settings here. See the documentation for more details.
@@ -223,3 +226,15 @@ vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
 vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+
+-- Setting ui-select
+require("telescope").setup {
+	extensions = {
+		["ui-select"] = {
+			require("telescope.themes").get_dropdown {
+			}
+		}
+	}
+}
+
+require("telescope").load_extension("ui-select")
