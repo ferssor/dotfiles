@@ -106,6 +106,9 @@ require("lazy").setup({
 			"williamboman/mason-lspconfig.nvim",
 			"neovim/nvim-lspconfig",
 		},
+		{
+			"marko-cerovac/material.nvim"
+		}
 	},
 	-- Configure any other settings here. See the documentation for more details.
 	-- colorscheme that will be used when installing plugins.
@@ -116,8 +119,8 @@ require("lazy").setup({
 
 
 -- Setting colorscheme
-require("catppuccin").setup()
-vim.cmd.colorscheme "catppuccin"
+require("material").setup()
+vim.cmd.colorscheme "material-darker"
 
 -- Setting telescope
 local builtin = require('telescope.builtin')
