@@ -3,80 +3,115 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.errorbells = false
 vim.opt.visualbell = true
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 vim.opt.title = true
-vim.opt.background = 'dark'
+vim.opt.background = "dark"
 
 -- Code Folding Options
-vim.opt.foldmethod = 'indent'
+vim.opt.foldmethod = "indent"
 vim.opt.foldnestmax = 3
 vim.opt.foldenable = false
 
 -- Miscellaneous Options
 vim.opt.autoread = true
-vim.opt.backspace = { 'indent', 'eol', 'start' }
-vim.opt.backupdir = vim.fn.expand('~/.cache/vim')
+vim.opt.backspace = { "indent", "eol", "start" }
+vim.opt.backupdir = vim.fn.expand("~/.cache/vim")
 vim.opt.confirm = true
-vim.opt.directory = vim.fn.expand('~/.cache/vim')
-vim.opt.formatoptions:append('j')
+vim.opt.directory = vim.fn.expand("~/.cache/vim")
+vim.opt.formatoptions:append("j")
 vim.opt.hidden = true
 vim.opt.history = 1000
 vim.opt.modeline = false
 vim.opt.swapfile = false
-vim.opt.nrformats:remove('octal')
+vim.opt.nrformats:remove("octal")
 vim.opt.shell = vim.o.shell
 vim.opt.spell = true
-vim.opt.wildignore:append({'.pyc', '.swp', '*.o', '*.out', '*.obj', '.git', '*.rbc', '*.class', '.svn', '*.gem', '*.zip', '*.tar.gz', '*.tar.bz2', '*.rar', '*.tar.xz', '*/vendor/gems/*', '*/vendor/cache/*', '*/vendor/ruby/*', '*/.bundle/*', '*/.sass-cache/*', '*/.bin/*', '*/doc/*', '*/.yardoc/*', '*/.idea/*', '*/node_modules/*', '*/target/*', '*/.stack-work/*', '*/sorbet/rbi/*'})
+vim.opt.wildignore:append({
+	".pyc",
+	".swp",
+	"*.o",
+	"*.out",
+	"*.obj",
+	".git",
+	"*.rbc",
+	"*.class",
+	".svn",
+	"*.gem",
+	"*.zip",
+	"*.tar.gz",
+	"*.tar.bz2",
+	"*.rar",
+	"*.tar.xz",
+	"*/vendor/gems/*",
+	"*/vendor/cache/*",
+	"*/vendor/ruby/*",
+	"*/.bundle/*",
+	"*/.sass-cache/*",
+	"*/.bin/*",
+	"*/doc/*",
+	"*/.yardoc/*",
+	"*/.idea/*",
+	"*/node_modules/*",
+	"*/target/*",
+	"*/.stack-work/*",
+	"*/sorbet/rbi/*",
+})
 
 -- Custom tabs spacing
 vim.api.nvim_create_autocmd("FileType", { pattern = "dart", command = "setlocal expandtab tabstop=2 shiftwidth=2" })
-vim.api.nvim_create_autocmd("FileType", { pattern = "javascript", command = "setlocal expandtab tabstop=2 shiftwidth=2" })
+vim.api.nvim_create_autocmd(
+	"FileType",
+	{ pattern = "javascript", command = "setlocal expandtab tabstop=2 shiftwidth=2" }
+)
 vim.api.nvim_create_autocmd("FileType", { pattern = "make", command = "setlocal noexpandtab tabstop=4 shiftwidth=4" })
-vim.api.nvim_create_autocmd("FileType", { pattern = "python", command = "setlocal tabstop=8 shiftwidth=4 softtabstop=4 foldmethod=syntax" })
+vim.api.nvim_create_autocmd(
+	"FileType",
+	{ pattern = "python", command = "setlocal tabstop=8 shiftwidth=4 softtabstop=4 foldmethod=syntax" }
+)
 vim.api.nvim_create_autocmd("FileType", { pattern = "rust", command = "setlocal expandtab tabstop=4 shiftwidth=4" })
 
--- Custom Key Mapping 
+-- Custom Key Mapping
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- Disable arrow keys
-vim.api.nvim_set_keymap('n', '<Up>', '<NOP>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Down>', '<NOP>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Left>', '<NOP>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Right>', '<NOP>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Up>", "<NOP>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Down>", "<NOP>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Left>", "<NOP>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Right>", "<NOP>", { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap('i', '<Up>', '<NOP>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '<Down>', '<NOP>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '<Left>', '<NOP>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '<Right>', '<NOP>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "<Up>", "<NOP>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "<Down>", "<NOP>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "<Left>", "<NOP>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "<Right>", "<NOP>", { noremap = true, silent = true })
 
 -- Copy and paste to/from Vim and the clipboard
-vim.api.nvim_set_keymap('n', '<C-y>', '"+y', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<C-y>', '"+y', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-p>', '"+P', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<C-p>', '"+P', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-y>", '"+y', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<C-y>", '"+y', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-p>", '"+P', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<C-p>", '"+P', { noremap = true, silent = true })
 
 -- Access system clipboard
-vim.opt.clipboard = 'unnamed'
+vim.opt.clipboard = "unnamed"
 
 -- Swapfiles location
-vim.opt.backupdir = '/tmp//'
-vim.opt.directory = '/tmp//'
+vim.opt.backupdir = "/tmp//"
+vim.opt.directory = "/tmp//"
 
 -- Lazy.nvim configuration
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-  if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
-      { "\nPress any key to exit..." },
-    }, true, {})
-    vim.fn.getchar()
-    os.exit(1)
-  end
+	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+	if vim.v.shell_error ~= 0 then
+		vim.api.nvim_echo({
+			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+			{ out, "WarningMsg" },
+			{ "\nPress any key to exit..." },
+		}, true, {})
+		vim.fn.getchar()
+		os.exit(1)
+	end
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -85,21 +120,23 @@ require("lazy").setup({
 	spec = {
 		{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 		{
-			'nvim-telescope/telescope.nvim', tag = '0.1.8',
-			dependencies = { 'nvim-lua/plenary.nvim' }
+			"nvim-telescope/telescope.nvim",
+			tag = "0.1.8",
+			dependencies = { "nvim-lua/plenary.nvim" },
 		},
-		{"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
-		{"nvim-neo-tree/neo-tree.nvim",
+		{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+		{
+			"nvim-neo-tree/neo-tree.nvim",
 			branch = "v3.x",
 			dependencies = {
 				"nvim-lua/plenary.nvim",
 				"nvim-tree/nvim-web-devicons",
 				"MunifTanjim/nui.nvim",
-			}
+			},
 		},
 		{
-			'nvim-lualine/lualine.nvim',
-			dependencies = { 'nvim-tree/nvim-web-devicons' }
+			"nvim-lualine/lualine.nvim",
+			dependencies = { "nvim-tree/nvim-web-devicons" },
 		},
 		{
 			"williamboman/mason.nvim",
@@ -107,14 +144,14 @@ require("lazy").setup({
 			"neovim/nvim-lspconfig",
 		},
 		{
-			"marko-cerovac/material.nvim"
+			"marko-cerovac/material.nvim",
 		},
 		{
-			"nvim-telescope/telescope-ui-select.nvim"
+			"nvim-telescope/telescope-ui-select.nvim",
 		},
 		{
-			"nvimtools/none-ls.nvim"
-		}
+			"nvimtools/none-ls.nvim",
+		},
 	},
 	-- Configure any other settings here. See the documentation for more details.
 	-- colorscheme that will be used when installing plugins.
@@ -123,68 +160,68 @@ require("lazy").setup({
 	checker = { enabled = true },
 })
 
-
 -- Setting colorscheme
 require("material").setup()
-vim.cmd.colorscheme "material-darker"
+vim.cmd.colorscheme("material-darker")
 
 -- Setting telescope
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
-vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+local builtin = require("telescope.builtin")
+vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
+vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
+vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
+vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
 
 -- Setting tree-sitter
 local config = require("nvim-treesitter.configs")
 config.setup({
-    ensure_installed = require'nvim-treesitter.parsers'.available_parsers(),
-    sync_install = false,
-    highlight = { enable = true },
-    indent = { enable = true }
+	ensure_installed = require("nvim-treesitter.parsers").available_parsers(),
+	sync_install = false,
+	highlight = { enable = true },
+	indent = { enable = true },
 })
 
 -- Setting neo-tree key mapping
-vim.keymap.set('n', '<leader>e', ':Neotree filesystem reveal right<CR>', {})
+vim.keymap.set("n", "<leader>e", ":Neotree filesystem reveal right<CR>", {})
 
 -- Setting lualine
-require('lualine').setup {
-  options = {
-    icons_enabled = true,
-    theme = "auto",
-    component_separators = '',
-    section_separators = { left = '', right = '' },
-  },
-  sections = {
-    lualine_a = { { 'mode', separator = { left = '' }, right_padding = 2} },
-    lualine_b = { 'filename', 'branch' },
-    lualine_c = {
-      '%=', --[[ add your center compoentnts here in place of this comment ]]
-    },
-    lualine_x = {},
-    lualine_y = { 'filetype', 'progress' },
-    lualine_z = {
-      { 'location', separator = { right = '' }, left_padding = 2},
-    },
-  },
-  inactive_sections = {
-    lualine_a = { 'filename' },
-    lualine_b = {},
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = { 'location' },
-  },
-  tabline = {},
-  extensions = {},
-}
+require("lualine").setup({
+	options = {
+		icons_enabled = true,
+		theme = "auto",
+		component_separators = "",
+		section_separators = { left = "", right = "" },
+	},
+	sections = {
+		lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },
+		lualine_b = { "filename", "branch" },
+		lualine_c = {
+			"%=", --[[ add your center compoentnts here in place of this comment ]]
+		},
+		lualine_x = {},
+		lualine_y = { "filetype", "progress" },
+		lualine_z = {
+			{ "location", separator = { right = "" }, left_padding = 2 },
+		},
+	},
+	inactive_sections = {
+		lualine_a = { "filename" },
+		lualine_b = {},
+		lualine_c = {},
+		lualine_x = {},
+		lualine_y = {},
+		lualine_z = { "location" },
+	},
+	tabline = {},
+	extensions = {},
+})
 
 -- Setting mason
 require("mason").setup()
 require("mason-lspconfig").setup({
 	ensure_installed = {
 		"arduino_language_server",
-		"astro", "bashls",
+		"astro",
+		"bashls",
 		"csharp_ls",
 		"harper_ls",
 		"cssls",
@@ -206,8 +243,8 @@ require("mason-lspconfig").setup({
 		"rust_analyzer",
 		"sqls",
 		"ts_ls",
-		"bashls"
-	}
+		"bashls",
+	},
 })
 
 -- Setting LSP's
@@ -230,25 +267,24 @@ vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 
 -- Setting ui-select
-require("telescope").setup {
+require("telescope").setup({
 	extensions = {
 		["ui-select"] = {
-			require("telescope.themes").get_dropdown {
-			}
-		}
-	}
-}
+			require("telescope.themes").get_dropdown({}),
+		},
+	},
+})
 
 require("telescope").load_extension("ui-select")
-
 
 -- Setting none-ls
 local null_ls = require("null-ls")
 
 null_ls.setup({
-    sources = {
-        null_ls.builtins.formatting.stylua,
-        null_ls.builtins.completion.spell,
-        require("none-ls.diagnostics.eslint"),
-    },
+	sources = {
+		null_ls.builtins.formatting.stylua,
+		null_ls.builtins.completion.spell,
+	},
 })
+
+vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
