@@ -174,7 +174,7 @@ vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help ta
 -- Setting tree-sitter
 local config = require("nvim-treesitter.configs")
 config.setup({
-	ensure_installed = require("nvim-treesitter.parsers").available_parsers(),
+	auto_install = true,
 	sync_install = false,
 	highlight = { enable = true },
 	indent = { enable = true },
@@ -229,7 +229,7 @@ require("mason-lspconfig").setup({
 		"jinja_lsp",
 		"gopls",
 		"html",
-		"eslint",
+		"eslint_d",
 		"jsonls",
 		"ast_grep",
 		"textlsp",
@@ -244,6 +244,11 @@ require("mason-lspconfig").setup({
 		"sqls",
 		"ts_ls",
 		"bashls",
+		"black",
+		"csharpier",
+		"isort",
+		"prettier",
+		"sql_formatter",
 	},
 })
 
@@ -252,13 +257,9 @@ local lspconfig = require("lspconfig")
 
 lspconfig.ts_ls.setup({})
 lspconfig.rust_analyzer.setup({})
-lspconfig.html.setup({})
 lspconfig.lua_ls.setup({})
 lspconfig.bashls.setup({})
 lspconfig.sqls.setup({})
-lspconfig.robotframework_ls.setup({})
-lspconfig.eslint.setup({})
-lspconfig.intelephense.setup({})
 lspconfig.pyright.setup({})
 
 vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
@@ -283,7 +284,13 @@ local null_ls = require("null-ls")
 null_ls.setup({
 	sources = {
 		null_ls.builtins.formatting.stylua,
+		null_ls.builtins.formatting.prettier,
+		null_ls.builtins.formatting.sql_formatter,
+		null_ls.builtins.formatting.black,
+		null_ls.builtins.formatting.csharpier,
+		null_ls.builtins.formatting.isort,
 		null_ls.builtins.completion.spell,
+		null_ls.builtins.diagnostics.eslint_d,
 	},
 })
 
