@@ -111,6 +111,9 @@ require("lazy").setup({
 		},
 		{
 			"nvim-telescope/telescope-ui-select.nvim"
+		},
+		{
+			"nvimtools/none-ls.nvim"
 		}
 	},
 	-- Configure any other settings here. See the documentation for more details.
@@ -189,7 +192,6 @@ require("mason-lspconfig").setup({
 		"jinja_lsp",
 		"gopls",
 		"html",
-		"java_language_server",
 		"eslint",
 		"jsonls",
 		"ast_grep",
@@ -238,3 +240,15 @@ require("telescope").setup {
 }
 
 require("telescope").load_extension("ui-select")
+
+
+-- Setting none-ls
+local null_ls = require("null-ls")
+
+null_ls.setup({
+    sources = {
+        null_ls.builtins.formatting.stylua,
+        null_ls.builtins.completion.spell,
+        require("none-ls.diagnostics.eslint"),
+    },
+})
